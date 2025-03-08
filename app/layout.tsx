@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-// import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/react";
+import { siteConfig } from "@/lib/config";
+import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,11 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // metadataBase: new URL("https://xochatbot.vercel.app"),
-  title: "XOChatbot",
-  description: "A Grok powered chatbot by your side!",
-  applicationName: "XOChatbot",
-  creator: "https://egxo.dev",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.name,
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  creator: siteConfig.website,
   referrer: "origin-when-cross-origin",
   keywords: [
     "typesctipt",
@@ -33,24 +35,24 @@ export const metadata: Metadata = {
     "vercel",
   ],
   openGraph: {
-    title: "XOChatbot",
-    description: "A Grok powered chatbot by your side!",
-    // url: "https://xochatbot.vercel.app",
-    siteName: "XOChatbot",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "XOChatbot",
-    description: "A Grok powered chatbot by your side!",
-    creator: "@eg__xo",
-    site: "@eg__xo",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    creator: siteConfig.socialHandle,
+    site: siteConfig.socialHandle,
   },
   appleWebApp: {
     capable: true,
-    title: "XOChatbot",
-    // startupImage: "/opengraph-image.png",
+    title: siteConfig.name,
+    startupImage: siteConfig.ogImage,
     statusBarStyle: "black-translucent",
   },
   formatDetection: {
@@ -62,6 +64,15 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,8 +81,15 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-        {/* <Analytics /> */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

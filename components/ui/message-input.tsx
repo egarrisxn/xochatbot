@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUp, Paperclip, Square, X } from "lucide-react";
 import { omit } from "remeda";
-
 import { cn } from "@/lib/utils";
 import { useAutosizeTextArea } from "@/hooks/use-autosize-textarea";
 import { Button } from "@/components/ui/button";
@@ -31,7 +30,7 @@ interface MessageInputWithAttachmentsProps extends MessageInputBaseProps {
 type MessageInputProps = MessageInputWithoutAttachmentProps | MessageInputWithAttachmentsProps;
 
 export function MessageInput({
-  placeholder = "Ask AI...",
+  placeholder = "Ask Me Anything!",
   className,
   onKeyDown: onKeyDownProp,
   submitOnEnter = true,
@@ -133,8 +132,6 @@ export function MessageInput({
     onKeyDownProp?.(event);
   };
 
-  // const textAreaRef = useRef<HTMLTextAreaElement>(null as unknown as HTMLTextAreaElement);
-  // const textAreaRef = useRef<HTMLTextAreaElement | null>(null) as React.RefObject<HTMLTextAreaElement>;
   const textAreaRef = useRef<HTMLTextAreaElement>(null!);
 
   const showFileList = props.allowAttachments && props.files && props.files.length > 0;
@@ -174,7 +171,7 @@ export function MessageInput({
       />
 
       {props.allowAttachments && (
-        <div className="absolute inset-x-3 bottom-0 z-20 overflow-x-scroll py-3">
+        <div className="absolute inset-x-3 bottom-0 z-20 overflow-x-hidden py-3">
           <div className="flex space-x-3">
             <AnimatePresence mode="popLayout">
               {props.files?.map((file) => {

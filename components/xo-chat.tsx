@@ -24,7 +24,7 @@ export function XOChat(props: ChatBot) {
         append={append}
         suggestions={[
           "Explain the concept of an API in a way that a 10-year-old would understand.",
-          "Who is the singerof the song Party in the USA and what is their backstory?",
+          "Who is the singer of the song Party in the USA and what is their backstory?",
           "Write a short story about a dog who accidentally becomes the mayor of a small town.",
         ]}
       />
