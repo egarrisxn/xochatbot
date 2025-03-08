@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster as SonnerToaster } from "sonner";
 import { siteConfig } from "@/lib/config";
 import { ThemeProvider } from "@/components/providers";
 import "./globals.css";
@@ -88,6 +89,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <SonnerToaster richColors closeButton position="bottom-right" />
         </ThemeProvider>
         <Analytics />
       </body>
