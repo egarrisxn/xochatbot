@@ -1,4 +1,4 @@
-export default function PrivacyPolicy() {
+export default function PrivacyPolicyPage() {
   return (
     <div className="mx-auto grid place-items-center min-h-screen">
       <div className="mx-auto max-w-2xl">

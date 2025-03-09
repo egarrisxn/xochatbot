@@ -1,34 +1,41 @@
 import { signIn, signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 
-interface SignInProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  provider: string;
-}
-
-export function SignIn({ provider, ...props }: SignInProps) {
+export function GoogleSignIn() {
   return (
     <form
       action={async () => {
         "use server";
-        await signIn(provider);
+        await signIn("google", { redirectTo: "/dashboard" });
       }}
-      className="absolute curser-pointer z-20 top-5 left-5"
     >
-      <Button {...props}>Sign In</Button>
+      <Button>Google</Button>
     </form>
   );
 }
 
-export function SignOut(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+export function GitHubSignIn() {
   return (
     <form
       action={async () => {
         "use server";
-        await signOut();
+        await signIn("github", { redirectTo: "/dashboard" });
       }}
-      className="absolute cursor-pointer z-20 top-5 left-5"
     >
-      <Button {...props}>Sign Out</Button>
+      <Button>GitHub</Button>
+    </form>
+  );
+}
+
+export function SignOut() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signOut({ redirectTo: "/" });
+      }}
+    >
+      <Button>Sign Out</Button>
     </form>
   );
 }
