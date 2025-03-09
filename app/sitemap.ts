@@ -7,8 +7,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: siteUrl,
       lastModified: new Date(),
     },
-     {
-      url: `${siteUrl}/xo`,
+    {
+      url: `${siteUrl}/login`,
       lastModified: new Date(),
     },
     {
