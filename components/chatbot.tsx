@@ -7,12 +7,19 @@ type ChatBot = {
   initialMessages?: UseChatOptions["initialMessages"];
 };
 
-export function XOChat(props: ChatBot) {
-  const { messages, input, handleInputChange, handleSubmit, append, stop, isLoading } =
-    useChat(props);
+export function Chatbot(props: ChatBot) {
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    append,
+    stop,
+    isLoading,
+  } = useChat(props);
 
   return (
-    <div className="flex h-[500px] w-full">
+    <div className="flex h-[500px] lg:rounded-lg lg:border-2 p-2 lg:p-5 lg:shadow-lg w-full">
       <Chat
         className="grow"
         messages={messages}

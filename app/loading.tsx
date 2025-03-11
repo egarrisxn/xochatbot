@@ -2,8 +2,10 @@ import Loader from "@/components/loader";
 
 export default function Loading() {
   return (
-    <section className="grid min-h-screen w-full place-items-center p-4 text-center text-4xl font-extrabold tracking-tight sm:p-6 sm:text-5xl lg:p-0">
-      <Loader />
+    <section className="mx-auto w-full min-h-screen max-w-2xl items-center grid grid-rows-2 lg:grid-rows-1 justify-center">
+      <div className="px-4">
+        <Loader />
+      </div>
     </section>
   );
 }

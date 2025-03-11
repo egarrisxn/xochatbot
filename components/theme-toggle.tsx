@@ -18,7 +18,6 @@ const ThemeToggle = () => {
   }
 
   return (
-    // <div className="absolute bottom-5 right-5 z-10">
     <Button
       variant="outline"
       size="icon"
@@ -26,12 +25,11 @@ const ThemeToggle = () => {
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {resolvedTheme === "dark" ? (
-        <SunIcon className="size-6 text-yellow-500" />
+        <SunIcon className="size-4 sm:size-6 text-yellow-500" />
       ) : (
-        <MoonIcon className="size-6 text-purple-800" />
+        <MoonIcon className="size-4 sm:size-6 text-purple-800" />
       )}
     </Button>
-    // </div>
   );
 };
 

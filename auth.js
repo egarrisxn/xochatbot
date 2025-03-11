@@ -10,7 +10,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     authorized({ request, auth }) {
       const { pathname } = request.nextUrl;
-      if (pathname === "/xo") return !!auth;
+      if (pathname === "/dashboard") return !!auth;
       return true;
     },
     jwt({ token, trigger, session, account }) {

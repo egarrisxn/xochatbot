@@ -1,21 +1,22 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import Logo from "@/components/logo";
+import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex min-h-screen flex-col w-full items-center text-center justify-center">
-      <nav className="absolute container flex flex-row justify-between items-center w-full top-0 p-2 sm:p-4 z-10">
-        <Logo />
-        <Button>
-          <Link href="/login">Login</Link>
-        </Button>
-      </nav>
-      <h1 className="text-5xl tracking-tighter sm:text-7xl lg:text-8xl font-black">
-        XO Chatbot
-      </h1>
-      <p className="text-lg sm:text-3xl">Login to Begin!</p>
+    <main className="grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto]">
+      <Navbar hrefLink="/dashboard" linkName="Dashboard" />
+      <div className="flex container mx-auto md:items-center max-w-2xl">
+        <div className="grid grid-rows-3 lg:grid-rows-1 text-center w-full">
+          <div></div>
+          <div>
+            <h1 className="text-5xl tracking-tighter sm:text-7xl lg:text-8xl font-black">
+              XO Chatbot
+            </h1>
+            <p className="text-lg sm:text-3xl ">Login to Begin!</p>
+          </div>
+          <div></div>
+        </div>
+      </div>
       <Footer />
     </main>
   );
