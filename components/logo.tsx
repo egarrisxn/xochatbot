@@ -7,7 +7,7 @@ export default function Logo() {
       alt="XOChatbot Logo"
       width={40}
       height={40}
-      className="shadow-lg rounded-full"
+      className="rounded-full shadow-lg"
     />
   );
 }

@@ -4,15 +4,11 @@ interface PromptSuggestionsProps {
   suggestions: string[];
 }
 
-export function PromptSuggestions({
-  label,
-  append,
-  suggestions,
-}: PromptSuggestionsProps) {
+export function PromptSuggestions({ label, append, suggestions }: PromptSuggestionsProps) {
   return (
     <div className="space-y-4 lg:space-y-6">
-      <h2 className="text-center text-xl lg:text-2xl font-bold">{label}</h2>
-      <div className="flex gap-2 lg:gap-6 text-xs lg:text-sm">
+      <h2 className="text-center text-xl font-bold lg:text-2xl">{label}</h2>
+      <div className="flex gap-2 text-xs lg:gap-6 lg:text-sm">
         {suggestions.map((suggestion) => (
           <button
             key={suggestion}

@@ -31,8 +31,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     async session({ session, token }) {
       if (token.accessToken) session.accessToken = token.accessToken;
-      if (token.googleAccessToken)
-        session.googleAccessToken = token.googleAccessToken;
+      if (token.googleAccessToken) session.googleAccessToken = token.googleAccessToken;
       return session;
     },
   },

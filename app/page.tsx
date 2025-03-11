@@ -5,14 +5,14 @@ export default function HomePage() {
   return (
     <main className="grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto]">
       <Navbar hrefLink="/dashboard" linkName="Dashboard" />
-      <div className="flex container mx-auto md:items-center max-w-2xl">
-        <div className="grid grid-rows-3 lg:grid-rows-1 text-center w-full">
+      <div className="container mx-auto flex max-w-2xl md:items-center">
+        <div className="grid w-full grid-rows-3 text-center lg:grid-rows-1">
           <div></div>
           <div>
-            <h1 className="text-5xl tracking-tighter sm:text-7xl lg:text-8xl font-black">
+            <h1 className="text-5xl font-black tracking-tighter sm:text-7xl lg:text-8xl">
               XO Chatbot
             </h1>
-            <p className="text-lg sm:text-3xl ">Login to Begin!</p>
+            <p className="text-lg sm:text-3xl">Login to Begin!</p>
           </div>
           <div></div>
         </div>

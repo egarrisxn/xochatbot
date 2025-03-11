@@ -30,7 +30,7 @@ export default function Navbar({
   signOutButton = false,
 }: NavbarProps) {
   return (
-    <nav className="sm:container w-full mx-auto flex flex-row justify-between items-center p-2 sm:p-4 z-10">
+    <nav className="z-10 mx-auto flex w-full flex-row items-center justify-between p-2 sm:container sm:p-4">
       <Link href="/">
         <Logo />
       </Link>

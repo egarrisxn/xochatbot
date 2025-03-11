@@ -107,7 +107,7 @@ function childrenTakeAllStringContents(element: React.ReactNode): string {
   }
 
   if (React.isValidElement(element)) {
-    const elementProps = element.props as React.PropsWithChildren<any>; 
+    const elementProps = element.props as React.PropsWithChildren<any>;
 
     if (elementProps.children) {
       const children = elementProps.children;

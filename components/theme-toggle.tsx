@@ -25,9 +25,9 @@ const ThemeToggle = () => {
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {resolvedTheme === "dark" ? (
-        <SunIcon className="size-4 sm:size-6 text-yellow-500" />
+        <SunIcon className="size-4 text-yellow-500 sm:size-6" />
       ) : (
-        <MoonIcon className="size-4 sm:size-6 text-purple-800" />
+        <MoonIcon className="size-4 text-purple-800 sm:size-6" />
       )}
     </Button>
   );

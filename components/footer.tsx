@@ -2,8 +2,8 @@ import ThemeToggle from "./theme-toggle";
 
 export default function Footer() {
   return (
-    <footer className="border-t w-full sm:container mx-auto flex flex-row items-center justify-between p-4 sm:p-6">
-      <p className="flex items-center text-sm  text-muted-foreground text-center">
+    <footer className="mx-auto flex w-full flex-row items-center justify-between border-t p-4 sm:container sm:p-6">
+      <p className="text-muted-foreground flex items-center text-center text-sm">
         &copy; {new Date().getFullYear()} XO by{" "}
         <a
           href="https://egxo.dev"

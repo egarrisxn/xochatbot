@@ -14,7 +14,7 @@ import { PromptSuggestions } from "@/components/ui/prompt-suggestions";
 interface ChatPropsBase {
   handleSubmit: (
     event?: { preventDefault?: () => void },
-    options?: { experimental_attachments?: FileList }
+    options?: { experimental_attachments?: FileList },
   ) => void;
   messages: Array<Message>;
   input: string;
@@ -22,10 +22,7 @@ interface ChatPropsBase {
   handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   isGenerating: boolean;
   stop?: () => void;
-  onRateResponse?: (
-    messageId: string,
-    rating: "thumbs-up" | "thumbs-down"
-  ) => void;
+  onRateResponse?: (messageId: string, rating: "thumbs-up" | "thumbs-down") => void;
 }
 
 interface ChatPropsWithoutSuggestions extends ChatPropsBase {
@@ -61,10 +58,7 @@ export function Chat({
       actions: onRateResponse ? (
         <>
           <div className="border-r pr-1">
-            <CopyButton
-              content={message.content}
-              copyMessage="Copied response to clipboard!"
-            />
+            <CopyButton content={message.content} copyMessage="Copied response to clipboard!" />
           </div>
           <Button
             size="icon"
@@ -84,32 +78,21 @@ export function Chat({
           </Button>
         </>
       ) : (
-        <CopyButton
-          content={message.content}
-          copyMessage="Copied response to clipboard!"
-        />
+        <CopyButton content={message.content} copyMessage="Copied response to clipboard!" />
       ),
     }),
-    [onRateResponse]
+    [onRateResponse],
   );
 
   return (
     <ChatContainer className={className}>
       {isEmpty && append && suggestions ? (
-        <PromptSuggestions
-          label="Example Prompts ✨"
-          append={append}
-          suggestions={suggestions}
-        />
+        <PromptSuggestions label="Example Prompts ✨" append={append} suggestions={suggestions} />
       ) : null}
 
       {messages.length > 0 ? (
         <ChatMessages messages={messages}>
-          <MessageList
-            messages={messages}
-            isTyping={isTyping}
-            messageOptions={messageOptions}
-          />
+          <MessageList messages={messages} isTyping={isTyping} messageOptions={messageOptions} />
         </ChatMessages>
       ) : null}
 
@@ -137,13 +120,8 @@ export function ChatMessages({
 }: React.PropsWithChildren<{
   messages: Message[];
 }>) {
-  const {
-    containerRef,
-    scrollToBottom,
-    handleScroll,
-    shouldAutoScroll,
-    handleTouchStart,
-  } = useAutoScroll([messages]);
+  const { containerRef, scrollToBottom, handleScroll, shouldAutoScroll, handleTouchStart } =
+    useAutoScroll([messages]);
 
   return (
     <div
@@ -152,9 +130,7 @@ export function ChatMessages({
       onScroll={handleScroll}
       onTouchStart={handleTouchStart}
     >
-      <div className="[grid-column:1/1] [grid-row:1/1] max-w-full">
-        {children}
-      </div>
+      <div className="[grid-column:1/1] [grid-row:1/1] max-w-full">{children}</div>
 
       <div className="[grid-column:1/1] [grid-row:1/1] flex flex-1 items-end justify-end">
         {!shouldAutoScroll && (
@@ -174,25 +150,24 @@ export function ChatMessages({
   );
 }
 
-export const ChatContainer = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn("grid max-h-full w-full grid-rows-[1fr_auto]", className)}
-      {...props}
-    />
-  );
-});
+export const ChatContainer = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn("grid max-h-full w-full grid-rows-[1fr_auto]", className)}
+        {...props}
+      />
+    );
+  },
+);
 ChatContainer.displayName = "ChatContainer";
 
 interface ChatFormProps {
   className?: string;
   handleSubmit: (
     event?: { preventDefault?: () => void },
-    options?: { experimental_attachments?: FileList }
+    options?: { experimental_attachments?: FileList },
   ) => void;
   children: (props: {
     files: File[] | null;
@@ -220,7 +195,7 @@ export const ChatForm = forwardRef<HTMLFormElement, ChatFormProps>(
         {children({ files, setFiles })}
       </form>
     );
-  }
+  },
 );
 ChatForm.displayName = "ChatForm";
 

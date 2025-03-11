@@ -2,11 +2,9 @@ import { GoogleSignIn, GitHubSignIn } from "@/components/auth-buttons";
 
 export default function LoginCard() {
   return (
-    <div className="flex flex-col rounded-lg mx-auto items-center p-8 sm:p-12 border-2 gap-4 border-border shadow-lg">
-      <h1 className="tracking-tighter text-6xl sm:text-7xl font-extrabold">
-        Login
-      </h1>
-      <div className="flex fex-row gap-2 sm:gap-4">
+    <div className="border-border mx-auto flex flex-col items-center gap-4 rounded-lg border-2 p-8 shadow-lg sm:p-12">
+      <h1 className="text-6xl font-extrabold tracking-tighter sm:text-7xl">Login</h1>
+      <div className="fex-row flex gap-2 sm:gap-4">
         <GoogleSignIn />
         <GitHubSignIn />
       </div>
