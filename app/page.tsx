@@ -12,7 +12,7 @@ export default function HomePage() {
             <h1 className="text-5xl font-black tracking-tighter sm:text-7xl lg:text-8xl">
               XO Chatbot
             </h1>
-            <p className="text-lg sm:text-3xl">Login to Begin!</p>
+            <p className="text-lg sm:text-3xl">Visit the dashboard to begin!</p>
           </div>
           <div></div>
         </div>

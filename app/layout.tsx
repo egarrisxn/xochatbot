@@ -35,13 +35,30 @@ export const metadata: Metadata = {
     "ai",
     "vercel",
   ],
+  icons: {
+    icon: {
+      url: "/icons/icon.png",
+      sizes: "192x192",
+      type: "image/png",
+    },
+    apple: {
+      url: "/icons/apple-icon.png",
+      sizes: "180x180",
+      type: "image/png",
+    },
+    other: {
+      rel: "icon",
+      url: "/icons/icon.svg",
+      type: "image/svg+xml",
+    },
+  },
   openGraph: {
+    type: "website",
+    locale: "en_US",
     title: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    type: "website",
-    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
@@ -50,19 +67,7 @@ export const metadata: Metadata = {
     creator: siteConfig.socialHandle,
     site: siteConfig.socialHandle,
   },
-  appleWebApp: {
-    capable: true,
-    title: siteConfig.name,
-    startupImage: siteConfig.ogImage,
-    statusBarStyle: "black-translucent",
-  },
-  formatDetection: {
-    telephone: true,
-    date: true,
-    address: true,
-    email: true,
-    url: true,
-  },
+  verification: {},
 };
 
 export const viewport: Viewport = {
@@ -81,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
