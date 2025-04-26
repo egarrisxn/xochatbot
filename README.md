@@ -1,8 +1,8 @@
 # XO Chatbot
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub repo size](https://img.shields.io/github/repo-size/egarrisxn/xochatbot) ![GitHub last commit](https://img.shields.io/github/last-commit/egarrisxn/xochatbot)
-
 ![opengraph-image](https://github.com/user-attachments/assets/4ffeaedb-d806-4bd6-b9e2-97743e96a8fe)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub repo size](https://img.shields.io/github/repo-size/egarrisxn/xochatbot) ![GitHub last commit](https://img.shields.io/github/last-commit/egarrisxn/xochatbot)
 
 ## Table of Contents
 
@@ -19,15 +19,24 @@
 
 ## Overview
 
-TBD
+This is a simple chatbot built with Next.js, React, and TypeScript. It integrates authentication via Next-Auth and uses Grok for AI-powered responses. The chatbot is deployed on Vercel for seamless scalability.
 
 ## Technologies
 
-TBD
+- **Next.js** – App Router for modern, server-side rendering and API routes  
+- **React** – UI components for an interactive experience  
+- **TypeScript** – Strong typing for better code quality  
+- **Next-Auth** – Authentication and session management  
+- **Grok** – AI-powered chatbot responses  
+- **Vercel** – Hosting and deployment  
+- **More** – Additional libraries and utilities for performance and styling  
 
 ## Features
 
-TBD
+- AI-powered chatbot responses using Grok  
+- Authentication with Next-Auth  
+- Optimized for fast responses and scalability  
+- Deployed on Vercel for easy access  
 
 ## Getting Started
 
