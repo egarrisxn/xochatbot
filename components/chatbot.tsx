@@ -3,16 +3,12 @@
 import { useChat, type UseChatOptions } from "@ai-sdk/react";
 import { Chat } from "@/components/ui/chat";
 
-type ChatBot = {
-  initialMessages?: UseChatOptions["initialMessages"];
-};
-
-export function Chatbot(props: ChatBot) {
+export function Chatbot(props: { initialMessages?: UseChatOptions["initialMessages"] }) {
   const { messages, input, handleInputChange, handleSubmit, append, stop, isLoading } =
     useChat(props);
 
   return (
-    <div className="flex h-[500px] w-full p-2 lg:rounded-lg lg:border-2 lg:p-5 lg:shadow-lg">
+    <div className="bg-background text-foreground flex h-[500px] w-full p-2 lg:rounded-lg lg:border-2 lg:p-5 lg:shadow-lg">
       <Chat
         className="grow"
         messages={messages}

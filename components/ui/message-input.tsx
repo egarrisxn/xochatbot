@@ -202,35 +202,35 @@ export function MessageInput({
             type="button"
             size="icon"
             variant="outline"
-            className="h-8 w-8"
+            className="size-8"
             aria-label="Attach a file"
             onClick={async () => {
               const files = await showFileUploadDialog();
               addFiles(files);
             }}
           >
-            <Paperclip className="h-4 w-4" />
+            <Paperclip className="size-4" />
           </Button>
         )}
         {isGenerating && stop ? (
           <Button
             type="button"
             size="icon"
-            className="h-8 w-8"
+            className="size-8"
             aria-label="Stop generating"
             onClick={stop}
           >
-            <Square className="h-3 w-3 animate-pulse" fill="currentColor" />
+            <Square className="size-3 animate-pulse" fill="currentColor" />
           </Button>
         ) : (
           <Button
             type="submit"
             size="icon"
-            className="h-8 w-8 transition-opacity"
+            className="size-8 transition-opacity"
             aria-label="Send message"
             disabled={props.value === "" || isGenerating}
           >
-            <ArrowUp className="h-5 w-5" />
+            <ArrowUp className="size-5" />
           </Button>
         )}
       </div>
@@ -270,7 +270,7 @@ function InterruptPrompt({ isOpen, close }: InterruptPromptProps) {
             onClick={close}
             aria-label="Close"
           >
-            <X className="h-3 w-3" />
+            <X className="size-3" />
           </button>
         </motion.div>
       )}
@@ -294,7 +294,7 @@ function FileUploadOverlay({ isDragging }: FileUploadOverlayProps) {
           transition={{ duration: 0.2 }}
           aria-hidden
         >
-          <Paperclip className="h-4 w-4" />
+          <Paperclip className="size-4" />
           <span>Drop your files here to attach them.</span>
         </motion.div>
       )}

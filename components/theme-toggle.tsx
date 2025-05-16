@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
-const ThemeToggle = () => {
+export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -21,7 +21,7 @@ const ThemeToggle = () => {
     <Button
       variant="outline"
       size="icon"
-      className="border-none"
+      className="border-none bg-transparent hover:bg-transparent"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {resolvedTheme === "dark" ? (
@@ -31,6 +31,4 @@ const ThemeToggle = () => {
       )}
     </Button>
   );
-};
-
-export default ThemeToggle;
+}

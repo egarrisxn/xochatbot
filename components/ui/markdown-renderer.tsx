@@ -2,13 +2,9 @@ import React, { FC, JSX, Suspense } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { cn } from "@/lib/utils";
-import { CopyButton } from "@/components/ui/copy-button";
+import { CopyButton } from "@/components/copy-button";
 
-interface MarkdownRendererProps {
-  children: string;
-}
-
-export function MarkdownRenderer({ children }: MarkdownRendererProps) {
+export function MarkdownRenderer({ children }: { children: string }) {
   return (
     <Markdown remarkPlugins={[remarkGfm]} components={COMPONENTS}>
       {children}

@@ -1,10 +1,10 @@
+import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { Toaster as SonnerToaster } from "sonner";
-import { siteConfig } from "@/lib/config";
+import { SITE_DATA } from "@/lib/config";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/providers";
-import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: siteConfig.name,
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
-  creator: siteConfig.website,
+  metadataBase: new URL(SITE_DATA.url),
+  title: SITE_DATA.name,
+  description: SITE_DATA.description,
+  applicationName: SITE_DATA.name,
+  creator: SITE_DATA.website,
   referrer: "origin-when-cross-origin",
   keywords: [
     "typesctipt",
@@ -55,17 +55,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
+    title: SITE_DATA.name,
+    description: SITE_DATA.description,
+    siteName: SITE_DATA.name,
+    url: SITE_DATA.url,
+    images: SITE_DATA.ogImage,
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    creator: siteConfig.socialHandle,
-    site: siteConfig.socialHandle,
+    title: SITE_DATA.name,
+    description: SITE_DATA.description,
+    creator: SITE_DATA.socialHandle,
+    site: SITE_DATA.socialHandle,
+    images: SITE_DATA.ogImage,
   },
   verification: {},
 };

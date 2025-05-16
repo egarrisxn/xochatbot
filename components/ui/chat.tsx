@@ -5,11 +5,11 @@ import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAutoScroll } from "@/hooks/use-auto-scroll";
 import { Button } from "@/components/ui/button";
-import { type Message } from "@/components/ui/chat-message";
-import { CopyButton } from "@/components/ui/copy-button";
 import { MessageInput } from "@/components/ui/message-input";
 import { MessageList } from "@/components/ui/message-list";
 import { PromptSuggestions } from "@/components/ui/prompt-suggestions";
+import { CopyButton } from "@/components/copy-button";
+import type { Message } from "@/components/ui/chat-message";
 
 interface ChatPropsBase {
   handleSubmit: (
@@ -35,8 +35,6 @@ interface ChatPropsWithSuggestions extends ChatPropsBase {
   suggestions: string[];
 }
 
-type ChatProps = ChatPropsWithoutSuggestions | ChatPropsWithSuggestions;
-
 export function Chat({
   messages,
   handleSubmit,
@@ -48,7 +46,7 @@ export function Chat({
   suggestions,
   className,
   onRateResponse,
-}: ChatProps) {
+}: ChatPropsWithoutSuggestions | ChatPropsWithSuggestions) {
   const lastMessage = messages.at(-1);
   const isEmpty = messages.length === 0;
   const isTyping = lastMessage?.role === "user";
@@ -87,7 +85,7 @@ export function Chat({
   return (
     <ChatContainer className={className}>
       {isEmpty && append && suggestions ? (
-        <PromptSuggestions label="Example Prompts ✨" append={append} suggestions={suggestions} />
+        <PromptSuggestions label="Sample Prompts ✨" append={append} suggestions={suggestions} />
       ) : null}
 
       {messages.length > 0 ? (
@@ -137,7 +135,7 @@ export function ChatMessages({
           <div className="sticky bottom-0 left-0 flex w-full justify-end">
             <Button
               onClick={scrollToBottom}
-              className="animate-in fade-in-0 slide-in-from-bottom-1 h-8 w-8 rounded-full ease-in-out"
+              className="animate-in fade-in-0 slide-in-from-bottom-1 size-8 rounded-full ease-in-out"
               size="icon"
               variant="ghost"
             >

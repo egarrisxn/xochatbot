@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
 import { Code2, Loader2, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FilePreview } from "@/components/ui/file-preview";
@@ -176,9 +176,9 @@ function ToolCall({ toolInvocations }: Pick<ChatMessageProps, "toolInvocations">
                 key={index}
                 className="bg-muted text-muted-foreground flex items-center gap-2 rounded-lg border px-3 py-2 text-sm"
               >
-                <Terminal className="h-4 w-4" />
+                <Terminal className="size-4" />
                 <span>Calling {invocation.toolName}...</span>
-                <Loader2 className="h-3 w-3 animate-spin" />
+                <Loader2 className="size-3 animate-spin" />
               </div>
             );
           case "result":
@@ -188,7 +188,7 @@ function ToolCall({ toolInvocations }: Pick<ChatMessageProps, "toolInvocations">
                 className="bg-muted flex flex-col gap-1.5 rounded-lg border px-3 py-2 text-sm"
               >
                 <div className="text-muted-foreground flex items-center gap-2">
-                  <Code2 className="h-4 w-4" />
+                  <Code2 className="size-4" />
                   <span>Result from {invocation.toolName}</span>
                 </div>
                 <pre className="text-foreground overflow-x-auto whitespace-pre-wrap">

@@ -1,22 +1,18 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/env";
+import { SITE_URL } from "@/lib/config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
-      url: siteUrl,
+      url: SITE_URL,
       lastModified: new Date(),
     },
     {
-      url: `${siteUrl}/login`,
+      url: `${SITE_URL}/privacy`,
       lastModified: new Date(),
     },
     {
-      url: `${siteUrl}/privacy`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${siteUrl}/terms`,
+      url: `${SITE_URL}/terms`,
       lastModified: new Date(),
     },
   ];
