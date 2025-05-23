@@ -3,10 +3,7 @@ import { auth } from "@/auth";
 import { redisClient } from "@/utils/redis";
 import { MAX_DAILY_USES } from "@/lib/constants";
 
-export async function GET(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _req: Request,
-) {
+export async function GET(_req: Request) {
   const session = await auth();
 
   if (!session || !session.user || !session.user.id) {

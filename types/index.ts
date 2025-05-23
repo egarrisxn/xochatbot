@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import type { VariantProps } from "class-variance-authority";
 import { chatBubbleVariants } from "@/lib/utils";
 
@@ -16,6 +17,18 @@ export interface AuthenticatedChatContentProps {
   onRateResponse?: (messageId: string, rating: "thumbs-up" | "thumbs-down") => void;
   suggestions?: string[];
   session: any;
+}
+
+export interface ChatFormProps {
+  className?: string;
+  handleSubmit: (
+    event?: { preventDefault?: () => void },
+    options?: { experimental_attachments?: FileList },
+  ) => void;
+  children: (props: {
+    files: File[] | null;
+    setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
+  }) => ReactElement;
 }
 
 // chat-message.tsx

@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactElement, forwardRef, useCallback, useState, useEffect } from "react";
+import { forwardRef, useCallback, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useChat } from "@ai-sdk/react";
 import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react";
@@ -12,7 +12,12 @@ import { MessageInput } from "@/components/ui/message-input";
 import { MessageList } from "@/components/ui/message-list";
 import { PromptSuggestions } from "@/components/ui/prompt-suggestions";
 import { CopyButton } from "@/components/copy-button";
-import type { Message, ChatPropsWithSuggestions, AuthenticatedChatContentProps } from "@/types";
+import type {
+  Message,
+  ChatPropsWithSuggestions,
+  AuthenticatedChatContentProps,
+  ChatFormProps,
+} from "@/types";
 
 function AuthenticatedChatContent({
   className,
@@ -218,18 +223,6 @@ export const ChatContainer = forwardRef<HTMLDivElement, React.HTMLAttributes<HTM
   },
 );
 ChatContainer.displayName = "ChatContainer";
-
-interface ChatFormProps {
-  className?: string;
-  handleSubmit: (
-    event?: { preventDefault?: () => void },
-    options?: { experimental_attachments?: FileList },
-  ) => void;
-  children: (props: {
-    files: File[] | null;
-    setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
-  }) => ReactElement;
-}
 
 export const ChatForm = forwardRef<HTMLFormElement, ChatFormProps>(
   ({ children, handleSubmit, className }, ref) => {
