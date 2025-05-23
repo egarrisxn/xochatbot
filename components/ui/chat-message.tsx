@@ -1,95 +1,14 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { type VariantProps, cva } from "class-variance-authority";
 import { Code2, Loader2, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FilePreview } from "@/components/ui/file-preview";
 import { MarkdownRenderer } from "@/components/ui/markdown-renderer";
+import { chatBubbleVariants } from "@/lib/utils";
+import type { ToolCall, ChatMessageProps } from "@/types";
 
-const chatBubbleVariants = cva(
-  "group/message relative break-words rounded-lg p-3 text-sm sm:max-w-[70%]",
-  {
-    variants: {
-      isUser: {
-        true: "bg-primary text-primary-foreground",
-        false: "bg-muted text-foreground",
-      },
-      animation: {
-        none: "",
-        slide: "duration-300 animate-in fade-in-0",
-        scale: "duration-300 animate-in fade-in-0 zoom-in-75",
-        fade: "duration-500 animate-in fade-in-0",
-      },
-    },
-    compoundVariants: [
-      {
-        isUser: true,
-        animation: "slide",
-        class: "slide-in-from-right",
-      },
-      {
-        isUser: false,
-        animation: "slide",
-        class: "slide-in-from-left",
-      },
-      {
-        isUser: true,
-        animation: "scale",
-        class: "origin-bottom-right",
-      },
-      {
-        isUser: false,
-        animation: "scale",
-        class: "origin-bottom-left",
-      },
-    ],
-  },
-);
-
-type Animation = VariantProps<typeof chatBubbleVariants>["animation"];
-
-interface Attachment {
-  name?: string;
-  contentType?: string;
-  url: string;
-}
-
-interface PartialToolCall {
-  state: "partial-call";
-  toolName: string;
-}
-
-interface ToolCall {
-  state: "call";
-  toolName: string;
-}
-
-interface ToolResult<T = unknown> {
-  state: "result";
-  toolName: string;
-  result: T;
-}
-
-type ToolInvocation = PartialToolCall | ToolCall | ToolResult<unknown>;
-
-export interface Message {
-  id: string;
-  role: "user" | "assistant" | (string & {});
-  content: string;
-  createdAt?: Date;
-  experimental_attachments?: Attachment[];
-  toolInvocations?: ToolInvocation[];
-}
-
-export interface ChatMessageProps extends Message {
-  showTimeStamp?: boolean;
-  animation?: Animation;
-  actions?: React.ReactNode;
-  className?: string;
-}
-
-export const ChatMessage: React.FC<ChatMessageProps> = ({
+export const ChatMessage = ({
   role,
   content,
   createdAt,
@@ -99,7 +18,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
   className,
   experimental_attachments,
   toolInvocations,
-}) => {
+}: ChatMessageProps) => {
   const files = useMemo(() => {
     return experimental_attachments?.map((attachment) => {
       const dataArray = dataUrlToUint8Array(attachment.url);

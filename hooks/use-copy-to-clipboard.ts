@@ -1,10 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { toast } from "sonner";
-
-type UseCopyToClipboardProps = {
-  text: string;
-  copyMessage?: string;
-};
+import type { UseCopyToClipboardProps } from "@/types";
 
 export function useCopyToClipboard({
   text,

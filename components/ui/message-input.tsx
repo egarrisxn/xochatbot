@@ -8,26 +8,7 @@ import { cn } from "@/lib/utils";
 import { useAutosizeTextArea } from "@/hooks/use-autosize-textarea";
 import { Button } from "@/components/ui/button";
 import { FilePreview } from "@/components/ui/file-preview";
-
-interface MessageInputBaseProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  value: string;
-  submitOnEnter?: boolean;
-  stop?: () => void;
-  isGenerating: boolean;
-  enableInterrupt?: boolean;
-}
-
-interface MessageInputWithoutAttachmentProps extends MessageInputBaseProps {
-  allowAttachments?: false;
-}
-
-interface MessageInputWithAttachmentsProps extends MessageInputBaseProps {
-  allowAttachments: true;
-  files: File[] | null;
-  setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
-}
-
-type MessageInputProps = MessageInputWithoutAttachmentProps | MessageInputWithAttachmentsProps;
+import type { MessageInputProps } from "@/types";
 
 export function MessageInput({
   placeholder = "Ask Me Anything!",

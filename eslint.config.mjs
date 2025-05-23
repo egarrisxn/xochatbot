@@ -17,7 +17,16 @@ const eslintConfig = [
     },
   }),
   {
-    ignores: ["**/node_modules/", ".git/", ".vscode/", ".next/", "public/"],
+    ignores: [
+      "**/node_modules/",
+      ".git/",
+      ".vscode/",
+      ".vercel/",
+      ".next/",
+      "public/",
+      "prisma/",
+      "lib/generated/",
+    ],
   },
 ];
 

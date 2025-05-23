@@ -1,12 +1,6 @@
-export function PromptSuggestions({
-  label,
-  append,
-  suggestions,
-}: {
-  label: string;
-  append: (message: { role: "user"; content: string }) => void;
-  suggestions: string[];
-}) {
+import type { PromptSuggestion } from "@/types";
+
+export function PromptSuggestions({ label, append, suggestions }: PromptSuggestion) {
   return (
     <div className="space-y-4 lg:space-y-6">
       <h2 className="text-center text-xl font-bold lg:text-2xl">{label}</h2>

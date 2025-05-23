@@ -2,18 +2,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SignOut } from "./signout-button";
 import Logo from "./logo";
+import type { NavProps } from "@/types";
 
 export default function Navbar({
   hrefLink = "/",
   linkName = "Home",
   showButton = true,
   signOutButton = false,
-}: {
-  hrefLink?: string;
-  linkName?: string;
-  showButton?: boolean;
-  signOutButton?: boolean;
-}) {
+}: NavProps) {
   return (
     <nav className="z-10 mx-auto flex w-full flex-row items-center justify-between p-2 sm:container sm:p-4">
       <Link href="/">

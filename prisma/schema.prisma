@@ -1,0 +1,64 @@
+// prisma/schema.prisma
+
+// This `datasource` block tells Prisma how to connect to your Neon database
+datasource db {
+  provider = "postgresql"
+  // The DATABASE_URL will be set by Vercel automatically for deployments
+  // For local development, make sure your .env file has DATABASE_URL
+  url      = env("DATABASE_URL")
+}
+
+// This `generator` block configures Prisma Client
+generator client {
+  provider = "prisma-client-js"
+}
+
+// -----------------------------------------------------
+// NextAuth.js Standard Models (REQUIRED for database adapter)
+// These models define the database tables NextAuth.js needs.
+// -----------------------------------------------------
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text // Use @db.Text for potentially long tokens
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId]) // Ensure provider + account ID is unique
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique // Session token must be unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique // Email must be unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[] // Relation to accounts
+  sessions      Session[] // Relation to sessions
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique // Token must be unique
+  expires    DateTime
+
+  @@unique([identifier, token]) // Ensure identifier + token is unique
+}

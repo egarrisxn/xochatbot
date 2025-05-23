@@ -3,11 +3,7 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
 import { FileIcon, X } from "lucide-react";
-
-interface FilePreviewProps {
-  file: File;
-  onRemove?: () => void;
-}
+import type { FilePreviewProps } from "@/types";
 
 export const FilePreview = React.forwardRef<HTMLDivElement, FilePreviewProps>((props, ref) => {
   if (props.file.type.startsWith("image/")) {
