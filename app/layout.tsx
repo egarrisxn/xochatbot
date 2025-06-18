@@ -26,7 +26,6 @@ export const metadata: Metadata = {
     "typesctipt",
     "javascript",
     "nextjs",
-    "next15",
     "react",
     "tailwindcss",
     "shadcnui",
@@ -91,6 +90,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
+      <meta name="apple-mobile-web-app-title" content={SITE_DATA.name} />
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
         <Analytics />
