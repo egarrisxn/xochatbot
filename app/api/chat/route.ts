@@ -56,7 +56,7 @@ export async function POST(req: Request) {
   // --- AI Stream Logic ---
   try {
     const result = streamText({
-      model: xai("grok-2-1212"),
+      model: xai("grok-3-mini"),
       messages,
     });
 
