@@ -142,7 +142,7 @@ export function MessageInput({
         onPaste={onPaste}
         onKeyDown={onKeyDown}
         className={cn(
-          "border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:border-primary z-10 w-full grow resize-none rounded-xl border p-3 pr-24 text-sm transition-[border] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          "z-10 w-full grow resize-none rounded-xl border border-input bg-background p-3 pr-24 text-sm ring-offset-background transition-[border] placeholder:text-muted-foreground focus-visible:border-primary focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
           showFileList && "pb-16",
           className,
         )}
@@ -242,7 +242,7 @@ function InterruptPrompt({ isOpen, close }: InterruptPromptProps) {
             },
           }}
           exit={{ top: 0, filter: "blur(5px)" }}
-          className="bg-background text-muted-foreground absolute left-1/2 flex -translate-x-1/2 overflow-hidden rounded-full border py-1 text-center text-sm whitespace-nowrap"
+          className="absolute left-1/2 flex -translate-x-1/2 overflow-hidden rounded-full border bg-background py-1 text-center text-sm whitespace-nowrap text-muted-foreground"
         >
           <span className="ml-2.5">Press Enter again to interrupt</span>
           <button
@@ -268,7 +268,7 @@ function FileUploadOverlay({ isDragging }: FileUploadOverlayProps) {
     <AnimatePresence>
       {isDragging && (
         <motion.div
-          className="border-border bg-background text-muted-foreground pointer-events-none absolute inset-0 z-20 flex items-center justify-center space-x-2 rounded-xl border border-dashed text-sm"
+          className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center space-x-2 rounded-xl border border-dashed border-border bg-background text-sm text-muted-foreground"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

@@ -54,7 +54,7 @@ export const ChatMessage = ({
         </div>
 
         {role === "assistant" && actions ? (
-          <div className="bg-background text-foreground absolute right-2 -bottom-4 flex space-x-1 rounded-lg border p-1 opacity-0 transition-opacity group-hover/message:opacity-100">
+          <div className="absolute right-2 -bottom-4 flex space-x-1 rounded-lg border bg-background p-1 text-foreground opacity-0 transition-opacity group-hover/message:opacity-100">
             {actions}
           </div>
         ) : null}
@@ -65,7 +65,7 @@ export const ChatMessage = ({
           dateTime={createdAt.toISOString()}
           className={cn(
             "mt-1 block px-1 text-xs opacity-50",
-            animation !== "none" && "animate-in fade-in-0 duration-500",
+            animation !== "none" && "animate-in duration-500 fade-in-0",
           )}
         >
           {formattedTime}
@@ -93,7 +93,7 @@ function ToolCall({ toolInvocations }: Pick<ChatMessageProps, "toolInvocations">
             return (
               <div
                 key={index}
-                className="bg-muted text-muted-foreground flex items-center gap-2 rounded-lg border px-3 py-2 text-sm"
+                className="flex items-center gap-2 rounded-lg border bg-muted px-3 py-2 text-sm text-muted-foreground"
               >
                 <Terminal className="size-4" />
                 <span>Calling {invocation.toolName}...</span>
@@ -104,13 +104,13 @@ function ToolCall({ toolInvocations }: Pick<ChatMessageProps, "toolInvocations">
             return (
               <div
                 key={index}
-                className="bg-muted flex flex-col gap-1.5 rounded-lg border px-3 py-2 text-sm"
+                className="flex flex-col gap-1.5 rounded-lg border bg-muted px-3 py-2 text-sm"
               >
-                <div className="text-muted-foreground flex items-center gap-2">
+                <div className="flex items-center gap-2 text-muted-foreground">
                   <Code2 className="size-4" />
                   <span>Result from {invocation.toolName}</span>
                 </div>
-                <pre className="text-foreground overflow-x-auto whitespace-pre-wrap">
+                <pre className="overflow-x-auto whitespace-pre-wrap text-foreground">
                   {JSON.stringify(invocation.result, null, 2)}
                 </pre>
               </div>

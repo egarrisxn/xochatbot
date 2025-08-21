@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 
 export default function HomePage() {
   return (
-    <section className="from-background to-accent grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto] bg-gradient-to-b via-blue-200/50 dark:via-blue-900/50">
+    <section className="grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto] bg-gradient-to-b from-background via-blue-200/50 to-accent dark:via-blue-900/50">
       <Navbar hrefLink="/dashboard" linkName="Dashboard" />
       <section className="container mx-auto flex max-w-3xl flex-col items-center justify-center px-4 text-center">
         <motion.h1
@@ -21,7 +21,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-muted-foreground mt-4 text-lg sm:text-2xl"
+          className="mt-4 text-lg text-muted-foreground sm:text-2xl"
         >
           Visit the dashboard to begin chatting with your AI.
         </motion.p>

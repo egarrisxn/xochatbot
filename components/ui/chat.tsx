@@ -198,7 +198,7 @@ export function ChatMessages({
           <div className="sticky bottom-0 left-0 flex w-full justify-end">
             <Button
               onClick={scrollToBottom}
-              className="animate-in fade-in-0 slide-in-from-bottom-1 size-8 rounded-full ease-in-out"
+              className="size-8 animate-in rounded-full ease-in-out fade-in-0 slide-in-from-bottom-1"
               size="icon"
               variant="ghost"
             >

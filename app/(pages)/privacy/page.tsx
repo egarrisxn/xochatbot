@@ -3,13 +3,13 @@ import Footer from "@/components/footer";
 
 export default function PrivacyPolicyPage() {
   return (
-    <section className="from-background to-accent grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto] bg-gradient-to-b via-blue-200/50 dark:via-blue-900/50">
+    <section className="grid min-h-[100dvh] w-full grid-rows-[auto_1fr_auto] bg-gradient-to-b from-background via-blue-200/50 to-accent dark:via-blue-900/50">
       <Navbar hrefLink="/dashboard" linkName="Dashboard" />
       <div className="container mx-auto flex max-w-2xl md:items-center">
         <div className="grid w-full grid-rows-1">
           <div></div>
           <div className="px-4 lg:px-0">
-            <h1 className="text-primary mb-4 text-2xl font-bold lg:mb-2 lg:text-3xl">
+            <h1 className="mb-4 text-2xl font-bold text-primary lg:mb-2 lg:text-3xl">
               Privacy Policy
             </h1>
             <p className="text-justify text-sm leading-tight lg:text-base lg:leading-normal">

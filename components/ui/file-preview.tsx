@@ -37,15 +37,15 @@ const ImageFilePreview = React.forwardRef<HTMLDivElement, FilePreviewProps>(
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             alt={`Attachment ${file.name}`}
-            className="bg-muted grid size-10 shrink-0 place-items-center rounded-sm border object-cover"
+            className="grid size-10 shrink-0 place-items-center rounded-sm border bg-muted object-cover"
             src={URL.createObjectURL(file)}
           />
-          <span className="text-muted-foreground w-full truncate">{file.name}</span>
+          <span className="w-full truncate text-muted-foreground">{file.name}</span>
         </div>
 
         {onRemove ? (
           <button
-            className="bg-background absolute -top-2 -right-2 flex size-4 items-center justify-center rounded-full border"
+            className="absolute -top-2 -right-2 flex size-4 items-center justify-center rounded-full border bg-background"
             type="button"
             onClick={onRemove}
             aria-label="Remove attachment"
@@ -82,17 +82,17 @@ const TextFilePreview = React.forwardRef<HTMLDivElement, FilePreviewProps>(
         exit={{ opacity: 0, y: "100%" }}
       >
         <div className="flex w-full items-center space-x-2">
-          <div className="bg-muted grid size-10 shrink-0 place-items-center rounded-sm border p-0.5">
-            <div className="text-muted-foreground h-full w-full overflow-hidden text-[6px] leading-none">
+          <div className="grid size-10 shrink-0 place-items-center rounded-sm border bg-muted p-0.5">
+            <div className="h-full w-full overflow-hidden text-[6px] leading-none text-muted-foreground">
               {preview || "Loading..."}
             </div>
           </div>
-          <span className="text-muted-foreground w-full truncate">{file.name}</span>
+          <span className="w-full truncate text-muted-foreground">{file.name}</span>
         </div>
 
         {onRemove ? (
           <button
-            className="bg-background absolute -top-2 -right-2 flex size-4 items-center justify-center rounded-full border"
+            className="absolute -top-2 -right-2 flex size-4 items-center justify-center rounded-full border bg-background"
             type="button"
             onClick={onRemove}
             aria-label="Remove attachment"
@@ -118,15 +118,15 @@ const GenericFilePreview = React.forwardRef<HTMLDivElement, FilePreviewProps>(
         exit={{ opacity: 0, y: "100%" }}
       >
         <div className="flex w-full items-center space-x-2">
-          <div className="bg-muted grid size-10 shrink-0 place-items-center rounded-sm border">
-            <FileIcon className="text-foreground size-6" />
+          <div className="grid size-10 shrink-0 place-items-center rounded-sm border bg-muted">
+            <FileIcon className="size-6 text-foreground" />
           </div>
-          <span className="text-muted-foreground w-full truncate">{file.name}</span>
+          <span className="w-full truncate text-muted-foreground">{file.name}</span>
         </div>
 
         {onRemove ? (
           <button
-            className="bg-background absolute -top-2 -right-2 flex size-4 items-center justify-center rounded-full border"
+            className="absolute -top-2 -right-2 flex size-4 items-center justify-center rounded-full border bg-background"
             type="button"
             onClick={onRemove}
             aria-label="Remove attachment"

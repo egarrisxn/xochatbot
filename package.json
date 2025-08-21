@@ -6,22 +6,6 @@
   "author": "Ethan G. (https://egxo.dev)",
   "license": "MIT",
   "private": true,
-  "keywords": [
-    "typesctipt",
-    "javascript",
-    "nextjs",
-    "next15",
-    "react",
-    "tailwindcss",
-    "shadcnui",
-    "prisma",
-    "neon",
-    "upstash",
-    "redis",
-    "grok",
-    "ai",
-    "vercel"
-  ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prebuild": "pnpm run lint && pnpm prisma generate",

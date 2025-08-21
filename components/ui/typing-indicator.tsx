@@ -3,7 +3,7 @@ import { Dot } from "lucide-react";
 export function TypingIndicator() {
   return (
     <div className="justify-left flex space-x-1">
-      <div className="bg-muted rounded-lg p-3">
+      <div className="rounded-lg bg-muted p-3">
         <div className="flex -space-x-2.5">
           <Dot className="animate-typing-dot-bounce size-5" />
           <Dot className="animate-typing-dot-bounce size-5 [animation-delay:90ms]" />

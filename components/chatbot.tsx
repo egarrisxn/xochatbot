@@ -4,7 +4,7 @@ import { Chat } from "@/components/ui/chat";
 
 export function Chatbot() {
   return (
-    <div className="bg-background text-foreground flex h-[500px] w-full p-2 lg:rounded-lg lg:border-2 lg:p-5 lg:shadow-lg">
+    <div className="flex h-[500px] w-full bg-background p-2 text-foreground lg:rounded-lg lg:border-2 lg:p-5 lg:shadow-lg">
       <Chat
         className="grow"
         suggestions={[
