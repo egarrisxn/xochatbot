@@ -5,7 +5,10 @@ import { chatBubbleVariants } from "@/lib/utils";
 // chat.tsx
 interface ChatPropsBase {
   className?: string;
-  onRateResponse?: (messageId: string, rating: "thumbs-up" | "thumbs-down") => void;
+  onRateResponse?: (
+    messageId: string,
+    rating: "thumbs-up" | "thumbs-down"
+  ) => void;
 }
 
 export interface ChatPropsWithSuggestions extends ChatPropsBase {
@@ -14,7 +17,10 @@ export interface ChatPropsWithSuggestions extends ChatPropsBase {
 
 export interface AuthenticatedChatContentProps {
   className?: string;
-  onRateResponse?: (messageId: string, rating: "thumbs-up" | "thumbs-down") => void;
+  onRateResponse?: (
+    messageId: string,
+    rating: "thumbs-up" | "thumbs-down"
+  ) => void;
   suggestions?: string[];
   session: any;
 }
@@ -23,7 +29,7 @@ export interface ChatFormProps {
   className?: string;
   handleSubmit: (
     event?: { preventDefault?: () => void },
-    options?: { experimental_attachments?: FileList },
+    options?: { experimental_attachments?: FileList }
   ) => void;
   children: (props: {
     files: File[] | null;
@@ -81,7 +87,9 @@ export interface MessageListProps {
   messages: Message[];
   showTimeStamps?: boolean;
   isTyping?: boolean;
-  messageOptions?: AdditionalMessageOptions | ((message: Message) => AdditionalMessageOptions);
+  messageOptions?:
+    | AdditionalMessageOptions
+    | ((message: Message) => AdditionalMessageOptions);
 }
 
 // file-preview.tsx
@@ -91,7 +99,8 @@ export interface FilePreviewProps {
 }
 
 // message-input.tsx
-interface MessageInputBaseProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface MessageInputBaseProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   value: string;
   submitOnEnter?: boolean;
   stop?: () => void;

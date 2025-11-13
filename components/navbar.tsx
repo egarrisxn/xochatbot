@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-// import { SignOut } from "./signout-button";
-import Logo from "./logo";
+import SignOutButton from "@/components/signout-button";
+import Logo from "@/components/logo";
+
 import type { NavProps } from "@/types";
 
 export default function Navbar({
@@ -17,9 +18,8 @@ export default function Navbar({
       </Link>
       {showButton &&
         (signOutButton ? (
-          <div>Sign Out Button</div>
+          <SignOutButton />
         ) : (
-          // <SignOut />
           <Button
             asChild
             size='sm'
