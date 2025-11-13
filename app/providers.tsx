@@ -15,7 +15,7 @@ export default function Providers({ children }: { children: ReactNode }) {
         disableTransitionOnChange
       >
         {children}
-        <SonnerToaster richColors closeButton position='bottom-right' />
+        <SonnerToaster richColors closeButton position='top-center' />
       </ThemeProvider>
     </SessionProvider>
   );
