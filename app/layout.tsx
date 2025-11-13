@@ -1,9 +1,11 @@
 import "./globals.css";
+import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SITE_DATA } from "@/lib/config";
 import Providers from "./providers";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -86,7 +88,7 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html suppressHydrationWarning lang='en'>

@@ -1,7 +1,14 @@
-import { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+  type DependencyList,
+} from "react";
 import { AUTO_SCROLL_ACTIVATE } from "@/lib/constants";
 
-export function useAutoScroll(dependencies: React.DependencyList) {
+export function useAutoScroll(dependencies: DependencyList) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const previousScrollTop = useRef<number | null>(null);
   const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
@@ -55,7 +62,6 @@ export function useAutoScroll(dependencies: React.DependencyList) {
     if (shouldAutoScroll) {
       scrollToBottom();
     }
-    // include stable callbacks and local state so ESLint/react-hooks can verify deps
   }, [depsKey, shouldAutoScroll, scrollToBottom]);
 
   return {

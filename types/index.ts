@@ -1,4 +1,13 @@
-import type { ReactElement } from "react";
+import type {
+  ReactElement,
+  HTMLAttributes,
+  Dispatch,
+  TextareaHTMLAttributes,
+  ReactNode,
+  SetStateAction,
+  RefObject,
+  DependencyList,
+} from "react";
 import type { VariantProps } from "class-variance-authority";
 import { chatBubbleVariants } from "@/lib/utils";
 
@@ -15,7 +24,8 @@ export interface ChatPropsWithSuggestions extends ChatPropsBase {
   suggestions?: string[];
 }
 
-export interface AuthenticatedChatContentProps {
+export interface AuthenticatedChatContentProps
+  extends HTMLAttributes<HTMLFormElement> {
   className?: string;
   onRateResponse?: (
     messageId: string,
@@ -33,7 +43,7 @@ export interface ChatFormProps {
   ) => void;
   children: (props: {
     files: File[] | null;
-    setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
+    setFiles: Dispatch<SetStateAction<File[] | null>>;
   }) => ReactElement;
 }
 
@@ -76,7 +86,7 @@ type Animation = VariantProps<typeof chatBubbleVariants>["animation"];
 export interface ChatMessageProps extends Message {
   showTimeStamp?: boolean;
   animation?: Animation;
-  actions?: React.ReactNode;
+  actions?: ReactNode;
   className?: string;
 }
 
@@ -100,7 +110,7 @@ export interface FilePreviewProps {
 
 // message-input.tsx
 interface MessageInputBaseProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   value: string;
   submitOnEnter?: boolean;
   stop?: () => void;
@@ -115,7 +125,7 @@ interface MessageInputWithoutAttachmentProps extends MessageInputBaseProps {
 interface MessageInputWithAttachmentsProps extends MessageInputBaseProps {
   allowAttachments: true;
   files: File[] | null;
-  setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
+  setFiles: Dispatch<SetStateAction<File[] | null>>;
 }
 
 export type MessageInputProps =
@@ -131,10 +141,10 @@ export interface PromptSuggestion {
 
 // use-autosize-textarea.ts
 export interface UseAutosizeTextAreaProps {
-  ref: React.RefObject<HTMLTextAreaElement>;
+  ref: RefObject<HTMLTextAreaElement>;
   maxHeight?: number;
   borderWidth?: number;
-  dependencies: React.DependencyList;
+  dependencies: DependencyList;
 }
 
 // use-copy-to-clipboard.ts
