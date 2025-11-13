@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "XO Chatbot",
-    short_name: "X.O.",
+    name: "xochatbot",
+    short_name: "XO",
     description: "A Grok powered chatbot by your side!",
     id: "/",
     start_url: "/",

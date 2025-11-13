@@ -13,7 +13,7 @@ export const SITE_DATA: {
   socialHandle: string;
   website: string;
 } = {
-  name: "XO Chatbot",
+  name: "xochatbot",
   description: "A Grok powered chatbot by your side!",
   url: SITE_URL,
   ogImage: `${SITE_URL}/images/opengraph-image.png`,

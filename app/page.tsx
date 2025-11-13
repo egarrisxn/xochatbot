@@ -15,7 +15,7 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
           className='bg-linear-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent sm:text-7xl lg:text-8xl'
         >
-          XO Chatbot
+          xochatbot
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 10 }}

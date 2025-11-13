@@ -1,4 +1,4 @@
-# XO Chatbot
+# xochatbot
 
 <img width="1200" height="630" alt="420573473-4ffeaedb-d806-4bd6-b9e2-97743e96a8fe" src="https://github.com/user-attachments/assets/cc325578-53d8-4fd2-b91c-22d144c979e3" />
 
@@ -23,20 +23,20 @@ This is a simple chatbot built with Next.js, React, and TypeScript. It integrate
 
 ## Technologies
 
-- **Next.js** – App Router for modern, server-side rendering and API routes  
-- **React** – UI components for an interactive experience  
-- **TypeScript** – Strong typing for better code quality  
-- **Next-Auth** – Authentication and session management  
-- **Grok** – AI-powered chatbot responses  
-- **Vercel** – Hosting and deployment  
-- **More** – Additional libraries and utilities for performance and styling  
+- **Next.js** – App Router for modern, server-side rendering and API routes
+- **React** – UI components for an interactive experience
+- **TypeScript** – Strong typing for better code quality
+- **Next-Auth** – Authentication and session management
+- **Grok** – AI-powered chatbot responses
+- **Vercel** – Hosting and deployment
+- **More** – Additional libraries and utilities for performance and styling
 
 ## Features
 
-- AI-powered chatbot responses using Grok  
-- Authentication with Next-Auth  
-- Optimized for fast responses and scalability  
-- Deployed on Vercel for easy access  
+- AI-powered chatbot responses using Grok
+- Authentication with Next-Auth
+- Optimized for fast responses and scalability
+- Deployed on Vercel for easy access
 
 ## Getting Started
 
