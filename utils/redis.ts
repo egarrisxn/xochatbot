@@ -11,7 +11,7 @@ const UPSTASH_REST_TOKEN = process.env.KV_REST_API_TOKEN;
 
 if (!UPSTASH_REST_URL || !UPSTASH_REST_TOKEN) {
   console.error(
-    "Missing KV_REST_API_URL or KV_REST_API_TOKEN environment variables. Redis client will not connect.",
+    "Missing KV_REST_API_URL or KV_REST_API_TOKEN environment variables. Redis client will not connect."
   );
 }
 
