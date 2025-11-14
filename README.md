@@ -1,109 +1,83 @@
-# xochatbot
+<a href="https://ai-sdk-starter-xai.vercel.app">
+  <h1 align="center">Vercel x xAI Chatbot</h1>
+</a>
 
-<img width="1200" height="630" alt="420573473-4ffeaedb-d806-4bd6-b9e2-97743e96a8fe" src="https://github.com/user-attachments/assets/cc325578-53d8-4fd2-b91c-22d144c979e3" />
+<p align="center">
+  An open-source AI chatbot app template built with Next.js, the AI SDK by Vercel, and xAI.
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub repo size](https://img.shields.io/github/repo-size/egarrisxn/xochatbot) ![GitHub last commit](https://img.shields.io/github/last-commit/egarrisxn/xochatbot)
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Technologies](#technologies)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Overview
-
-This is a simple chatbot built with Next.js, React, and TypeScript. It integrates authentication via Next-Auth and uses Grok for AI-powered responses. The chatbot is deployed on Vercel for seamless scalability.
-
-## Technologies
-
-- **Next.js** – App Router for modern, server-side rendering and API routes
-- **React** – UI components for an interactive experience
-- **TypeScript** – Strong typing for better code quality
-- **Next-Auth** – Authentication and session management
-- **Grok** – AI-powered chatbot responses
-- **Vercel** – Hosting and deployment
-- **More** – Additional libraries and utilities for performance and styling
+<p align="center">
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
+  <a href="#running-locally"><strong>Running Locally</strong></a> ·
+  <a href="#authors"><strong>Authors</strong></a>
+</p>
+<br/>
 
 ## Features
 
-- AI-powered chatbot responses using Grok
-- Authentication with Next-Auth
-- Optimized for fast responses and scalability
-- Deployed on Vercel for easy access
+- Streaming text responses powered by the [AI SDK by Vercel](https://sdk.vercel.ai/docs), allowing multiple AI providers to be used interchangeably with just a few lines of code.
+- Built-in tool integration for extending AI capabilities (demonstrated with a weather tool example).
+- Reasoning model support.
+- [shadcn/ui](https://ui.shadcn.com/) components for a modern, responsive UI powered by [Tailwind CSS](https://tailwindcss.com).
+- Built with the latest [Next.js](https://nextjs.org) App Router.
 
-## Getting Started
+## Deploy Your Own
 
-To get a local copy up and running, follow these simple steps.
+You can deploy your own version to Vercel by clicking the button below:
 
-### Prerequisites
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=Vercel+x+xAI+Chatbot&repository-name=ai-sdk-starter-xai&repository-url=https%3A%2F%2Fgithub.com%2Fvercel-labs%2Fai-sdk-starter-xai&demo-title=Vercel+x+xAI+Chatbot&demo-url=https%3A%2F%2Fai-sdk-starter-xai.labs.vercel.dev%2F&demo-description=A+simple+chatbot+application+built+with+Next.js+that+uses+xAI+via+the+AI+SDK+and+the+Vercel+Marketplace&products=[{%22type%22:%22integration%22,%22protocol%22:%22ai%22,%22productSlug%22:%22grok%22,%22integrationSlug%22:%22xai%22}])
 
-- **Node.js** (v18 or higher)
-- **pnpm** (recommended for package management)
+## Running Locally
 
-## Installation
-
-1. Clone the repo:
+1. Clone the repository and install dependencies:
 
    ```bash
-   git clone https://github.com/egarrisxn/xochatbot.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd xprod
-   ```
-
-3. Install dependencies:
-   ```bash
+   npm install
+   # or
+   yarn install
+   # or
    pnpm install
    ```
 
-## Usage
+2. Install the [Vercel CLI](https://vercel.com/docs/cli):
 
-- To run the development server:
+   ```bash
+   npm i -g vercel
+   # or
+   yarn global add vercel
+   # or
+   pnpm install -g vercel
+   ```
 
-  ```bash
-  pnpm dev
-  ```
+   Once installed, link your local project to your Vercel project:
 
-- To build the project for production:
+   ```bash
+   vercel link
+   ```
 
-  ```bash
-  pnpm build
-  ```
+   After linking, pull your environment variables:
 
-- To start the production server:
+   ```bash
+   vercel env pull
+   ```
 
-  ```bash
-  pnpm start
-  ```
+   This will create a `.env.local` file with all the necessary environment variables.
 
-- To lint the project:
+3. Run the development server:
 
-  ```bash
-  pnpm lint
-  ```
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-## Deployment
+4. Open [http://localhost:3000](http://localhost:3000) to view your new AI chatbot application.
 
-Deploy the project on a hosting platform that supports Next.js, such as Vercel, Netlify, or any other cloud provider. Ensure you have set up your environment variables correctly on the hosting platform.
+## Authors
 
-## Contributing
+This repository is maintained by the [Vercel](https://vercel.com) team and community contributors.
 
-Contributions are welcome! If you have suggestions or improvements, feel free to fork the repository and submit a pull request.
-
-## License
-
-This project is licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-## Contact
-
-If you have any questions or need further assistance, feel free to reach out via GitHub: [egarrisxn](https://github.com/egarrisxn) and/or Email: [egarrisxn@gmail.com](mailto:egarrisxn@gmail.com).
+Contributions are welcome! Feel free to open issues or submit pull requests to enhance functionality or fix bugs.

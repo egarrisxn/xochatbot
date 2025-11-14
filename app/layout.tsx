@@ -1,10 +1,9 @@
-import "./globals.css";
-import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SITE_DATA } from "@/lib/config";
 import Providers from "./providers";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +29,7 @@ export const metadata: Metadata = {
     "react",
     "tailwindcss",
     "shadcnui",
-    "prisma",
-    "neon",
     "upstash",
-    "redis",
     "grok",
     "ai",
     "vercel",
@@ -80,20 +76,17 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
   ],
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: ReactNode;
+  children: React.ReactNode;
 }>) {
   return (
     <html suppressHydrationWarning lang='en'>
-      <head>
-        <meta name='apple-mobile-web-app-title' content={SITE_DATA.name} />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >

@@ -1,5 +1,2 @@
-export const MAX_DAILY_USES = 10;
-export const GLOBAL_RATE_LIMIT_DURATION = "10s";
-export const GLOBAL_RATE_LIMIT_REQUESTS = 5;
-
-export const AUTO_SCROLL_ACTIVATE = 50;
+export const CHAT_LIMIT = 5; // 5 requests
+export const CHAT_WINDOW = "86400 s"; // Per 86400 seconds (24 hours)

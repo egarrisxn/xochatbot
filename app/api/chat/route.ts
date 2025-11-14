@@ -1,98 +1,72 @@
-import { xai } from "@ai-sdk/xai";
-import { streamText } from "ai";
+import { NextRequest, NextResponse } from "next/server";
+import { convertToModelMessages, stepCountIs, streamText, UIMessage } from "ai";
 import { auth } from "@/auth";
-import { chatRequestSchema } from "@/lib/schemas";
-import {
-  globalRatelimit,
-  checkAndIncrementDailyUsage,
-} from "@/utils/rate-limiters";
+import { model, type modelID } from "@/ai/providers";
+import { weatherTool } from "@/ai/tools";
+import { ratelimit } from "@/lib/rate-limiter";
 
 export const maxDuration = 30;
+export const runtime = "edge";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const session = await auth();
 
   if (!session || !session.user || !session.user.id) {
-    return new Response("Unauthorized", { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const userId = session.user.id;
+  const identifier = session.user.id;
 
-  // --- Global IP-based Rate Limiting ---
-  const ip = req.headers.get("x-forwarded-for") ?? "anonymous";
-  const { success: globalRateLimitSuccess } = await globalRatelimit.limit(
-    `global_chat_rate_limit_${ip}`
-  );
+  // Check the rate limit
+  const { success, limit, remaining, reset } =
+    await ratelimit.limit(identifier);
 
-  if (!globalRateLimitSuccess) {
-    return new Response(
-      "Too many requests from this IP. Please try again later.",
-      { status: 429 }
-    );
-  }
+  // Set response headers for client transparency (optional)
+  const headers = {
+    "X-RateLimit-Limit": limit.toString(),
+    "X-RateLimit-Remaining": remaining.toString(),
+    "X-RateLimit-Reset": reset.toString(),
+  };
 
-  // --- Daily User Limit Check ---
-  const { success: dailyLimitSuccess, message: dailyLimitMessage } =
-    await checkAndIncrementDailyUsage(userId);
-  if (!dailyLimitSuccess) {
-    return new Response(dailyLimitMessage, { status: 429 });
-  }
-
-  // --- Input Validation ---
-  const body = await req.json();
-  const validationResult = chatRequestSchema.safeParse(body);
-  if (!validationResult.success) {
-    return new Response(
-      JSON.stringify({
-        error: "Invalid input",
-        details: validationResult.error.issues,
-      }),
+  if (!success) {
+    const timeToWait = Math.ceil((reset - Date.now()) / 1000);
+    // Rate limit exceeded: return 429 Too Many Requests
+    return NextResponse.json(
       {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      }
+        error: `Rate limit exceeded. Try again in ${timeToWait} seconds.`,
+      },
+      { status: 429, headers }
     );
   }
-  const { messages } = validationResult.data;
 
-  // --- AI Model Configuration ---
-  const xaiApiKey = process.env.XAI_API_KEY;
+  const {
+    messages,
+    selectedModel,
+  }: { messages: UIMessage[]; selectedModel: modelID } = await req.json();
 
-  if (!xaiApiKey) {
-    console.error("XAI_API_KEY environment variable is not configured.");
-    return new Response("Server configuration error: AI key missing.", {
-      status: 500,
-    });
-  }
+  const result = streamText({
+    model: model.languageModel(selectedModel),
+    system: "You are a helpful assistant.",
+    messages: convertToModelMessages(messages),
+    stopWhen: stepCountIs(5), // Enable multi-step agentic flow
+    tools: {
+      getWeather: weatherTool,
+    },
+    experimental_telemetry: {
+      isEnabled: false,
+    },
+  });
 
-  // --- AI Stream Logic ---
-  try {
-    const result = streamText({
-      model: xai("grok-3-mini"),
-      messages,
-    });
-
-    return result.toTextStreamResponse();
-  } catch (error) {
-    console.error("Error streaming from xAI:", error);
-    return new Response("Error processing your request with the AI model.", {
-      status: 500,
-    });
-  }
+  return result.toUIMessageStreamResponse({
+    sendReasoning: true,
+    onError: (error) => {
+      if (error instanceof Error) {
+        if (error.message.includes("Rate limit")) {
+          return "Rate limit exceeded. Please try again later.";
+        }
+      }
+      console.error(error);
+      return "An error occurred.";
+    },
+  });
 }
-
-// import { NextResponse } from "next/server";
-
-// export async function POST(request: Request) {
-//   const body = await request.json();
-
-//   console.log("Received chat message on Node.js runtime:", body);
-
-//   return NextResponse.json(
-//     {
-//       status: "success",
-//       message: "Message processed by Next.js Route Handler.",
-//     },
-//     { status: 200 }
-//   );
-// }
