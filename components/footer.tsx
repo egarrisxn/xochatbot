@@ -6,7 +6,7 @@ export default function Footer() {
       <div className='mx-auto flex w-full flex-row items-center justify-between p-2 sm:container'>
         <p className='flex items-center text-center text-muted-foreground'>
           <span className='text-xs leading-0 tracking-tight'>
-            &copy; {new Date().getFullYear()}
+            2026
           </span>
           <a
             href='https://github.com/egarrisxn/xochatbot'
